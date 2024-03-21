@@ -25,11 +25,14 @@ clean-targets: # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
+# metrics:
+
 models:
   template_project_name:
+    +persist_docs:
+      relation: true
+      columns: true
+
     intermediate:
       +materialized: ephemeral
       +schema: intermediate
@@ -41,3 +44,29 @@ models:
     staging:
       +materialized: view
       +schema: staging
+
+seeds:
+  template_project_name:
+    +schema: seeds
+    +persist_docs:
+      relation: true
+      columns: true
+
+# semantic-models:
+
+snapshots:
+  template_project_name:
+    +schema: snapshots
+    +persist_docs:
+      relation: true
+      columns: true
+# sources:
+
+# tests:
+
+# vars:
+
+# on-run-start: sql-statement | [sql-statement]
+# on-run-end: sql-statement | [sql-statement]
+
+# restrict-access: true | false
