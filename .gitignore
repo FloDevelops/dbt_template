@@ -1,0 +1,12 @@
+
+target/
+dbt_packages/
+logs/
+
+secrets/*
+
+.venv/
+.env
+.user.yml
+
+!**/.gitkeep

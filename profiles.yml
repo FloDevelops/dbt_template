@@ -1,0 +1,14 @@
+template_project_name:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      project: '{{ env_var("GCP_PROJECT_ID") }}'
+      location: '{{ env_var("GCP_REGION") }}'
+      dataset: '{{ "dbt_" + env_var("DEVELOPER_USERNAME") }}'
+      method: service-account
+      keyfile: ./secrets/sa.json
+      priority: interactive
+      threads: 8
+      job_execution_timeout_seconds: 300
+      job_retries: 1

@@ -1,0 +1,4 @@
+dbt-bigquery==1.7.6
+dbt-core==1.7.10
+dbt-invoke==1.0.0
+shandy-sqlfmt==0.21.2
